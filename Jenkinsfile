@@ -21,7 +21,7 @@ pipeline{
        }    
     }
     post{
-        sucess{
+        success{
 
              emailext body: '  successfully completed my capstone project', subject: 'successfully build', to: 'jeevithals700@gmail.com'   
 
