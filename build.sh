@@ -4,7 +4,7 @@
  
 
 #build the image
- docker build -t myreactapp .
+sudo docker build -t myreactapp .
 
  #tag the image
- docker tag myreactapp jeevithals25/myreactapp
+  sudo docker tag myreactapp jeevithals25/myreactapp
