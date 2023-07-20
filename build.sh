@@ -7,4 +7,4 @@
  docker build -t $IMAGENAME .
 
  #tag the image
- docker tag $IMAGENAME jeevithals25/latest
+ docker tag $IMAGENAME:latest
