@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #set the image name
- IMAGENAME= "myreactapp"
+ 
 
 #build the image
- docker build -t $IMAGENAME .
+ docker build -t myreactapp .
 
  #tag the image
- docker tag $IMAGENAME:latest
+ docker tag myreactapp jeevithals25/myreactapp
