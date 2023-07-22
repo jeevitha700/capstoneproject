@@ -10,15 +10,16 @@ PASSWORD="girijadvg"
 #if the branch equal to dev, build the image and push it to dockerhub dev repository
 if [ "$branch"  == "dev" ];
 then
-    
+     echo "Building image for dev branch..."
      docker build -t $IMAGENAME .
      docker login --username $USERNAME --password $PASSWORD 
      docker push jeevithals25/dev:$IMAGENAME
  elif
     [ "$branch" == "prod" ];   
 then
-    docker build -t $IMAGENAME .
-    docker login --username $USERNAME --password $PASSWORD
-    docker push jeevithals25/prod:$IMAGENAME
+     echo"Building image for prod branch..."
+     docker build -t $IMAGENAME 
+     docker login --username $USERNAME --password $PASSWORD
+     docker push jeevithals25/prod:$IMAGENAME
  fi
 done
