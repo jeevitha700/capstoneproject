@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+#set the image 
  IMAGENAME="myreactapp"
 
 #build the image
