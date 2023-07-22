@@ -12,7 +12,7 @@ pipeline{
          steps{
              echo "testing the application"
 
-             sh 'docker run -d -p 80:80 $IMAGENAME'
+             sh 'docker-compose down && docker-compose up -d'
          } 
        } 
        stage ('deploy'){
