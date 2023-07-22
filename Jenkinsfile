@@ -11,15 +11,16 @@ pipeline{
        stage ('test'){
          steps{
              echo "testing the application"
-
-             sh 'docker-compose down && docker-compose up -d'
+             sh "chmod +x ./deploy.sh"
+             sh('./deploy.sh')
+             
          } 
        } 
        stage ('deploy'){
           steps{
              echo "deploying the application"
-             sh "chmod +x ./deploy.sh"
-             sh('./deploy.sh')
+             sh 'docker-compose down && docker-compose up -d'
+            
           }
        }    
     }
