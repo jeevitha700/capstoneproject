@@ -1,4 +1,4 @@
-
+#!/bin/bash
 #set the image
 IMAGENAME="myreactapp"
 USERNAME=jeevithals25!
