@@ -11,8 +11,8 @@ pipeline{
        stage ('push'){
          steps{
              echo "testing the application"
-             sh "chmod +x ./deploy.sh"
-             sh('./deploy.sh')
+             sh "chmod +x ./deploy1.sh"
+             sh('./deploy1.sh')
              
          } 
        } 
