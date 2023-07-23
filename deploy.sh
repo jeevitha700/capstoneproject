@@ -1,20 +1,22 @@
-#!/bin/bash
 
+#!/bin/bash
 #set the image
 IMAGENAME="myreactapp"
-
- #set the branch name
-branch='https://github.com/jeevitha700/capstoneproject.git'
-
-#if the branch equal to dev, build the image and push it to dockerhub dev repository
-if [ "$branch"  == "dev" ];
-then
-    
-     docker build -t $IMAGENAME .
-     docker push jeevithals25/dev:$IMAGENAME
-elif
-    [ "$branch" == "prod" ]; 
-then  
+export USERNAME="jeevithals25"
+export PASSWORD="girijadvg"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+ if [ "$BRANCH" == "dev" ] ;
+ then
     docker build -t $IMAGENAME .
-    docker push jeevithals25/prod:$IMAGENAME
+    docker login --username $USERNAME --password $PASSWORD
+     docker tag myreactapp jeevithals25/dev
+    docker push jeevithals25/dev:latest
+
+elif [ "$BRANCH" == "prod" ] ;
+then
+    docker build -t $IMAGENAME .
+    docker login --username $USERNAME --password $PASSWORD
+    docker tag myreactapp jeevithals25/prod
+    docker push jeevithals25/prod:latest
+
  fi
