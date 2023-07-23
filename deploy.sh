@@ -1,24 +1,24 @@
-#!/bin/bash
+#!/bin/bash 
 #set the image
 IMAGENAME="myreactapp"
-USERNAME="jeevithals25!"
-PASSWORD="girijadvg"
+export USERNAME="jeevithals25!"
+export PASSWORD="girijadvg"
  #set the branch name
- while read oldrev newrev refname; do
-    branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
 #if the branch equal to dev, build the image and push it to dockerhub dev repository
-if [ "$branch"  == "dev" ];
+if [ "$BRANCH"  == "dev" ];
 then
     
      docker build -t $IMAGENAME .
      docker login --username $USERNAME --password $PASSWORD 
-     docker push jeevithals25/dev:$IMAGENAME
+     docker push myreactapp  $USERNAME/dev:myreactapp
  elif
-    [ "$branch" == "prod" ];   
+    [ "$BRANCH" == "prod" ];   
 then
-    docker build -t $IMAGENAME .
+    docker build -t $IMAGENAME/prod .
+     docker logout
     docker login --username $USERNAME --password $PASSWORD
-    docker push jeevithals25/prod:$IMAGENAME
+    docker push $USERNAME/prod:latest
  fi
-done
+
