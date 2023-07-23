@@ -12,7 +12,7 @@ pipeline{
          steps{
              echo "pushing the application"
              sh "chmod +x ./deploy1.sh"
-             sh('./deploy1.sh')
+             sh('bash deploy1.sh')
              
          } 
        } 
