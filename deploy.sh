@@ -1,6 +1,6 @@
 #!/bin/bash
 #set the image
-IMAGENAME="myreactapp"
+IMAGENAME="$myreactapp"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
  if [ "$BRANCH" = "dev" ] ;
  then
