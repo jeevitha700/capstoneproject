@@ -15,7 +15,7 @@ pipeline{
          steps{
              echo "pushing the application"
              sh "chmod +x ./deploy.sh"
-             sh('./capstoneproject/deploy.sh')
+             sh('./deploy.sh')
              
          } 
        } 
