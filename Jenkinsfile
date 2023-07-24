@@ -8,11 +8,11 @@ pipeline{
               sh('./build.sh')
           }
        }  
-       stage ('test'){
+       stage ('push'){
          steps{
-             echo "testing the application"
+             echo "pushing the application"
              sh "chmod +x ./deploy.sh"
-             sh('./deploy.sh')
+             sh('bash deploy.sh')
              
          } 
        } 
