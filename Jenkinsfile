@@ -2,7 +2,7 @@ pipeline{
     agent {label 'linux'}
     environment{
        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-    )
+    }
     stages{
         stage( 'build'){
           steps{
@@ -11,15 +11,15 @@ pipeline{
               sh('./build.sh')
           }
        }  
-       stage ('push'){
+       stage('push'){
          steps{
              echo "pushing the application"
              sh "chmod +x ./deploy.sh"
-             sh('bash deploy.sh')
+             sh('./deploy.sh')
              
          } 
        } 
-       stage ('deploy'){
+       stage('deploy'){
           steps{
              echo "deploying the application"
              sh 'docker-compose down && docker-compose up -d'
