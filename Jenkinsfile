@@ -6,19 +6,19 @@ pipeline{
     stages{
         stage( 'build'){
           steps{
-              script{
+              
               echo "building the application"
-              sh "chmod +x ./build.sh" 
+              sh "chmod +x build.sh" 
               sh('./build.sh')
-              }
           }
        }  
        stage('push'){
          steps{
+             script{
              echo "pushing the application"
-             sh "chmod +x ./deploy.sh"
+             sh "chmod +x deploy.sh"
              sh('./deploy.sh')
-             
+             } 
          } 
        } 
        stage('deploy'){
