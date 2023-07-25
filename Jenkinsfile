@@ -16,6 +16,7 @@ pipeline{
          steps{
              script{
              echo "pushing the application"
+              gitStatus = sh(returnStdout: true, script: 'deploy.sh').trim()
              sh "chmod +x deploy.sh"
              sh('./deploy.sh')
              } 
