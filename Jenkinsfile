@@ -9,7 +9,6 @@ pipeline{
               
               echo "building the application"
               sh "chmod +x build.sh" 
-               def out=sh(returnStdout: true,script: 'build.sh')   
               sh('./build.sh')
           }
        }  
@@ -17,8 +16,7 @@ pipeline{
          steps{
              script{
              echo "pushing the application"
-             sh "chmod +x deploy.sh"
-              def out=sh(returnStdout: true,script: 'deploy.sh')     
+             sh "chmod +x deploy.sh"     
              sh('./deploy.sh')            
              } 
          } 
