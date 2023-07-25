@@ -16,7 +16,7 @@ pipeline{
          steps{
              script{
              echo "pushing the application"
-             sh "chmod +x deploy.sh"
+             sh "chmod +x deploy2.sh"
              sh('./deploy2.sh')
              } 
          } 
