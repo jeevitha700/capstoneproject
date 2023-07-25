@@ -15,9 +15,10 @@ pipeline{
        stage('push'){
          steps{
              script{
-             echo "pushing the application"
-             sh "chmod +x deploy.sh"     
-             sh('./deploy.sh')            
+                echo "pushing the application"
+                def deployout = sh(returnStdout: true, script: './deploy.sh').trim() 
+               sh "chmod +x deploy.sh"     
+                        
              } 
          } 
        } 
