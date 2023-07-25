@@ -9,6 +9,7 @@ pipeline{
               
               echo "building the application"
               sh "chmod +x build.sh" 
+               def out=sh(returnStdout: true,script: 'build.sh')   
               sh('./build.sh')
           }
        }  
