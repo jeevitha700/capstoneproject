@@ -17,8 +17,8 @@ pipeline{
              script{
              echo "pushing the application"
              sh "chmod +x deploy.sh"
-             sh('./deploy.sh')
-             gitStatus = sh(returnStdout: true, script: 'deploy.sh').trim()
+              def out=sh(returnStdout: true,script: 'deploy.sh')     
+             sh('./deploy.sh')            
              } 
          } 
        } 
