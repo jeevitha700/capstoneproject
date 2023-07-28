@@ -3,9 +3,6 @@ set +x -v
 #set the image
 IMAGENAME="myreactapp"
 
-BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-
-if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch ...."
     docker build -t $IMAGENAME .
     echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u  $DOCKERHUB_CREDENTIALS_USR --password-stdin
