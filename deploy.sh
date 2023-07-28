@@ -17,5 +17,6 @@ elif [ "$BRANCH" == "prod" ]; then
       docker logout
  else
 
-    echo "exit the code is 1"
+    echo "Invalid branch"
+    exit 1
 fi
