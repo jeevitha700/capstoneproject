@@ -4,7 +4,7 @@ pipeline{
        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages{
-        stage( 'build'){
+        stage('build'){
           steps{
               
               echo "building the application"
@@ -15,9 +15,10 @@ pipeline{
        stage('push'){
          steps{
              script{
-                echo "pushing the application"
-                def deployout = sh(returnStdout: true, script: './deploy.sh').trim() 
-               sh "chmod +x deploy.sh"     
+                 echo "pushing the application"
+                 sh "chmod +x deploy.sh" 
+                 def deployout = sh(returnStdout: true, script: './deploy.sh').trim() 
+                   
                         
              } 
          } 
