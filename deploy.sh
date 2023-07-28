@@ -2,7 +2,7 @@
 set +x -v
 #set the image
 IMAGENAME="myreactapp"
-BRANCH=$(https://github.com/jeevitha700/capstoneproject.git)
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch ...."
     docker build -t $IMAGENAME .
