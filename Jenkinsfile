@@ -2,26 +2,24 @@ pipeline{
     agent any
     environment{
        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-       FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
-       GIT_BRANCH = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
-  }
+    }
     
     stages{
-  }
-        stage('build'){
+       stage('build'){
           steps{
               
               echo "building the application"
               sh "chmod +x build.sh" 
               sh('./build.sh')
           }
-       }  
+       }
+    }
        stage('push'){
          steps{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                  echo "$branch=env.BRANCH_NAME"
+                  echo "$CB=env.BRANCH_NAME"
                  sh('./deploy.sh')       
              } 
          } 
