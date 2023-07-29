@@ -20,7 +20,7 @@ pipeline{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
                 
-                 echo "${env.GIT_BRANCH}"
+                 echo "${env.GIT_BRANCH.substringAfterLast('/')}"
                  sh('./deploy.sh')       
              } 
          } 
