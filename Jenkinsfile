@@ -16,10 +16,11 @@ pipeline{
          steps{
              script{
                  echo "pushing the application"
-                 sh "chmod +x deploy.sh"
+                 sh "chmod +x deploy.sh" 
                 checkout scm
-                echo " branchName = ${env.GIT_BRANCH} "
-                    sh('./deploy.sh')       
+                 BRANCH_NAME = "${GIT_BRANCH.split("/").size() > 1 ? GIT_BRANCH.split("/")[1] : GIT_BRANCH}"
+                 echo :"$BRANCH_NAME"
+                 sh('./deploy.sh')       
              } 
          } 
                     
