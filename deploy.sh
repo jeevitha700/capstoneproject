@@ -15,5 +15,6 @@ elif [ "$BRANCH" == "prod" ]; then
       echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u  $DOCKERHUB_CREDENTIALS_USR --password-stdin
       docker push jeevithals25/prod:latest
       docker logout
- 
+ else 
+       echo"$BRANCH" IS INVALID
 fi
