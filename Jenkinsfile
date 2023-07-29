@@ -23,7 +23,7 @@ pipeline{
                 echo "Environment Variables:"
                 sh "printenv"
                 checkout scm
-                echo "Current Git branch: ${env.BRANCH_NAME}"
+                echo "Current Git branch: ${env.GIT_BRANCH}"
                  sh('./deploy.sh')       
              } 
          } 
