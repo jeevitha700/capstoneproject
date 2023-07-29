@@ -19,8 +19,11 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                 def branchName= env.GIT_BRANCH.substringAfterLast('/')
-                 echo "Currentbranch:${branchName}"
+                  def branch_nem = scm.branches[0].name
+                    if (branch_nem.contains("*/")) {
+                           branch_nem = branch_nem.split("\\*/")[1]
+                           }
+                   echo branch_nem
                  sh('./deploy.sh')       
              } 
          } 
