@@ -2,7 +2,7 @@
 #set the image
 IMAGENAME="myreactapp"
 
-branch=$(git branch --show-current)
+branch=$ (git branch --show-current)
 
 
 if [ "$GIT_BRANCH" == "dev" ]; then
