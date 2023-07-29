@@ -15,5 +15,5 @@ elif [ "$GIT_BRANCH" == "prod" ]; then
       docker push jeevithals25/prod:latest
       docker logout
  else 
-       echo"$GIT_BRANCH" IS INVALID
+       echo"$BRANCH" IS INVALID
 fi
