@@ -18,7 +18,7 @@ pipeline{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
                 checkout scm
-                echo "BRANCH = ${env.GIT_BRANCH}"
+                echo "GIT_BRANCH = ${env.GIT_BRANCH}"
                  sh('./deploy.sh')       
              } 
          } 
