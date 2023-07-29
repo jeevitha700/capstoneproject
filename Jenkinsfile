@@ -23,7 +23,7 @@ pipeline{
                     if (branch_nem.contains("*/")) {
                            branch_nem = branch_nem.split("\\*/")[1]
                            }
-                   echo branch_nem
+                      BRANCH=branch_nem
                  sh('./deploy.sh')       
              } 
          } 
