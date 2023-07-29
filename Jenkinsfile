@@ -20,8 +20,8 @@ pipeline{
                 checkout scm
                 echo " branchName = ${env.GIT_BRANCH}"
                  def cleanBranchName = sh(returnStdout: true, script: "echo ${branchName} | sed 's/^origin\\///'")
-                      GIT_BRANCH = cleanBranchName.trim()
-                      echo "Cleaned branch name: ${GIT_BRANCH}"
+                      BRANCH = cleanBranchName.trim()
+                      echo "Cleaned branch name: ${BRANCH}"
                     
                  
                  sh('./deploy.sh')       
