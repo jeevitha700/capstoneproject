@@ -17,9 +17,8 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh" 
-                 def deployout = sh(returnStdout: true, script: './deploy.sh').trim() 
-                   
-                        
+                 def BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                 sh('./deploy.sh')       
              } 
          } 
        } 
