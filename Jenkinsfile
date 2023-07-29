@@ -13,7 +13,7 @@ pipeline{
               sh('./build.sh')
           }
        }
-    }
+    
        stage('push'){
          steps{
              script{
@@ -41,4 +41,4 @@ pipeline{
         }
     }   
     
-
+}
