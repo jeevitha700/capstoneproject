@@ -19,8 +19,8 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                
-                 echo "${env.GIT_BRANCH.substringAfterLast('/')}"
+                 def branchName= env.GIT_BRANCH.substringAfterLast('/')
+                 echo "Currentbranch:${branchName}"
                  sh('./deploy.sh')       
              } 
          } 
