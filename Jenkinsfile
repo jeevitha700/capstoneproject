@@ -18,10 +18,16 @@ pipeline{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
                 checkout scm
-                echo "GIT_BRANCH = ${env.GIT_BRANCH}"
+                echo " branchName = ${env.GIT_BRANCH}"
+                 def cleanBranchName = sh(returnStdout: true, script: "echo ${branchName} | sed 's/^origin\\///'")
+                      GIT_BRANCH = cleanBranchName.trim()
+                      echo "Cleaned branch name: ${GIT_BRANCH}"
+                    
+                 
                  sh('./deploy.sh')       
              } 
          } 
+                    
        } 
        stage('deploy'){
           steps{
