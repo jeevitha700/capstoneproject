@@ -16,8 +16,10 @@ pipeline{
          steps{
              script{
                  echo "pushing the application"
-                 sh "chmod +x deploy.sh" 
-                 def BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                 sh "chmod +x deploy.sh"
+                 def branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                   echo "Current Git branch: ${branchName}"
+                 
                  sh('./deploy.sh')       
              } 
          } 
