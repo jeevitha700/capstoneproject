@@ -19,8 +19,8 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                  BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
-                 echo $env.BRANCH_NAME
+                
+                 echo "$env.BRANCH_NAME"
                  sh('./deploy.sh')       
              } 
          } 
