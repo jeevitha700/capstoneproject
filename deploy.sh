@@ -1,14 +1,6 @@
 #!/bin/bash
 #set the image
 IMAGENAME="myreactapp"
-
-# Get the current Git branch name
-branchName=$(git rev-parse --abbrev-ref HEAD)
-
-# Export the branch name as an environment variable
-export BRANCH_NAME="${branchName}"
-
-
 if [ "$GIT_BRANCH" == "dev" ]; then
     echo "Building image for dev branch "
     docker build -t $IMAGENAME .
@@ -23,5 +15,5 @@ elif [ "$GIT_BRANCH" == "prod" ]; then
       docker push jeevithals25/prod:latest
       docker logout
  else 
-       echo"$BRANCH_NAME" IS INVALID
+       echo"$GIT_BRANCH" IS INVALID
 fi
