@@ -17,11 +17,6 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                 echo "Workspace Contents:"
-                sh "ls -la ${WORKSPACE}"
-                
-                echo "Environment Variables:"
-                sh "printenv"
                 checkout scm
                 echo "Current Git branch: ${env.GIT_BRANCH}"
                  sh('./deploy.sh')       
