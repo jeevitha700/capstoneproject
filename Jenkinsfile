@@ -21,7 +21,7 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                  echo "$branch=env.GIT_BRANCH"
+                  echo "$branch=env.BRANCH_NAME"
                  sh('./deploy.sh')       
              } 
          } 
