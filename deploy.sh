@@ -1,8 +1,7 @@
 #!/bin/bash
 #set the image
 IMAGENAME="myreactapp"
- branch=$GIT_BRANCH
-   name =${$branch | sed 's|.*/||'} 
+ branch=$(git symbolic-ref HEAD |sed -e 's,*/\(.*\),\1,')
 if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch "
     docker build -t $IMAGENAME .
