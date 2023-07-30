@@ -1,7 +1,7 @@
 #!/bin/bash
 #set the image
 IMAGENAME="myreactapp"
-BRANCH=$BRANCH_NAME
+BRANCH=$GIT_BRANCH
 
 if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch "
