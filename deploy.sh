@@ -2,7 +2,7 @@
 #set the image
 IMAGENAME="myreactapp"
  branch=$GIT_BRANCH 
-  name =$ {echo $branch |cut -d '/' -f2} 
+  name=${echo $branch |cut -d '/' -f2} 
      
 if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch "
