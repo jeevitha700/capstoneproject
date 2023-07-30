@@ -2,8 +2,8 @@
 #set the image
 IMAGENAME="myreactapp"
  branch=$GIT_BRANCH 
-    read -p "echo $branch |cut -d '/' -f2 ":name  
-     bra= $name
+  name =$ [echo $branch |cut -d '/' -f2] 
+     
 if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch "
     docker build -t $IMAGENAME .
