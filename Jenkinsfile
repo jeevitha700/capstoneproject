@@ -5,6 +5,12 @@ pipeline{
     }
     
     stages{
+        stage('checkscm){
+          steps{
+              
+          }
+
+        
        stage('build'){
           steps{
               
