@@ -34,7 +34,7 @@ pipeline{
        stage('deploy'){
           steps{
              script {
-                   def dockerCmd = 'docker run -itd --name My-first-container -p 80:80 jeevithals25/dev:latest'
+                   def dockerCmd = 'docker run -itd --name My-first-container1 -p 80:80 jeevithals25/dev:latest'
                    sshagent(['3.109.181.189']) {
                       sh "ssh -o StrictHostKeyChecking=no ubuntu@65.0.91.54 ${dockerCmd}"
                    }
