@@ -11,8 +11,6 @@ pipeline{
           }
     
         }
-    }   
-
         
         stage('build'){
           steps{
