@@ -26,11 +26,6 @@ pipeline{
              script{
                  echo "pushing the application"
                  sh "chmod +x deploy.sh"
-                  def branch_nem = scm.branches[0].name
-                    if (branch_nem.contains("*/")) {
-                           branch_nem = branch_nem.split("\\*/")[1]
-                           }
-                                def branch = ${branch_nem}
                  sh('./deploy.sh')       
              } 
          } 
@@ -41,7 +36,7 @@ pipeline{
              script {
                    def dockerCmd = 'docker-compose down &&  docker-compose up -d'
                    sshagent(['3.109.181.189']) {
-                      sh "ssh -o StrictHostKeyChecking=no ubuntu@13.235.128.224 ${dockerCmd}"
+                      sh "ssh -o StrictHostKeyChecking=no ubuntu@65.0.91.54 ${dockerCmd}"
                    }
              }
          }    
