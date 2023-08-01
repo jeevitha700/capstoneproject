@@ -45,7 +45,8 @@ pipeline{
                    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.235.128.224 ${dockerCmd}"
             }
          }    
-      }
+       }
+    }
     post{
         success{
 
