@@ -5,9 +5,10 @@ pipeline{
     }
     
     stages{
-        stage('checkscm){
+        stage('checkscm'){
           steps{
-              
+            checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/jeevitha700/capstoneproject.git']])
+                sh 'npm install'
           }
 
         
@@ -29,7 +30,7 @@ pipeline{
                     if (branch_nem.contains("*/")) {
                            branch_nem = branch_nem.split("\\*/")[1]
                            }
-                    echo branch_nem
+                                def branch = ${branch_nem}
                  sh('./deploy.sh')       
              } 
          } 
@@ -37,8 +38,11 @@ pipeline{
        } 
        stage('deploy'){
           steps{
-             echo "deploying the application"
-             sh 'docker-compose down && docker-compose up -d'
+             echo "deploying the application"   
+              
+             def dockerCmd  = 'docker-compose down && docker-compose up -d'
+              sshagent(['3.109.181.189']) {
+                   sh "ssh -o StrictHostKeyChecking=no ubuntu@13.235.128.224 ${dockerCmd}"
             
           }
        }    
