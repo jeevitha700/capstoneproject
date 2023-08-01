@@ -43,10 +43,9 @@ pipeline{
              def dockerCmd  = 'docker-compose down && docker-compose up -d'
               sshagent(['3.109.181.189']) {
                    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.235.128.224 ${dockerCmd}"
-            
-          }
-       }    
-    }
+            }
+         }    
+      }
     post{
         success{
 
