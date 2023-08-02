@@ -1,7 +1,7 @@
 #!/bin/bash
 #set the image
 IMAGENAME="myreactapp"
-# BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
  #If  the branch is dev, build the image and push it to docker-hub dev repository
 if [ "$BRANCH" == "dev" ]; then
     echo "Building image for dev branch "
