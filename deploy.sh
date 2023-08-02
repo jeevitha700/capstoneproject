@@ -18,6 +18,5 @@ elif [ "$BRANCH" == "prod" ]; then
       docker tag myreactapp jeevithals25/prod
       docker push jeevithals25/prod:latest
       docker logout
- else 
-       echo"$BRANCH" IS INVALID
+
 fi
