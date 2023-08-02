@@ -1,26 +1,46 @@
 pipeline{
     agent any
+    environment{
+       DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    }
+    
     stages{
-        stage( 'build'){
+        stage('checkscm'){
           steps{
+            checkout scmGit(branches: [[name: '*/prod']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/jeevitha700/capstoneproject.git']])
+          }
+    
+        }
+        
+        stage('build'){
+          steps{
+              
               echo "building the application"
-              sh "chmod +x ./build.sh" 
+              sh "chmod +x build.sh" 
               sh('./build.sh')
           }
-       }  
-       stage ('test'){
+       }
+    
+       stage('push'){
          steps{
-             echo "testing the application"
-             sh 'docker-compose down && docker-compose up -d'
+             script{
+                 echo "pushing the application"
+                 sh "chmod +x deploy.sh"
+                 sh('./deploy.sh')       
+             } 
          } 
+                    
        } 
-       stage ('deploy'){
+       stage('deploy'){
           steps{
-             echo "deploying the appliction"
-             sh "chmod +x ./deploy.sh"
-             sh('./deploy.sh')
-          }
-       }    
+             script {
+                   def dockerCmd = 'docker run -itd --name My-first-container3 -p 80:80 jeevithals25/dev:latest'
+                   sshagent(['sshkey']) {
+                      sh "ssh -o StrictHostKeyChecking=no ubuntu@13.233.106.6 ${dockerCmd}"
+                   }
+             }
+         }    
+       }
     }
     post{
         success{
@@ -31,4 +51,3 @@ pipeline{
     }   
     
 }
-         
